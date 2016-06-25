@@ -1,0 +1,40 @@
+{
+  "name": "stylelint-value-list-box-shadow-inset-first",
+  "version": "0.0.0",
+  "description": "Stylelint rule for checking if box-shadow inset values are first in list.",
+  "main": "index.js",
+  "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/)",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "eslint {index,test/**/*}.js && node test/index.js"
+  },
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "postcss-value-parser": "^3.3.0",
+    "stylelint": "^6.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-niksy": "^2.1.0",
+    "stylelint-test-rule-tape": "^0.2.0"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    "box-shadow",
+    "inset",
+    "stylelint-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksy/stylelint-value-list-box-shadow-inset-first.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/issues"
+  },
+  "homepage": "https://github.com/niksy/stylelint-value-list-box-shadow-inset-first#readme"
+}
