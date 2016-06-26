@@ -1,6 +1,6 @@
 {
   "name": "stylelint-value-list-box-shadow-inset-first",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Stylelint rule for checking if box-shadow inset values are first in list.",
   "main": "index.js",
   "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/)",
