@@ -1,5 +1,5 @@
 import test from 'stylelint-test-rule-tape';
-import fn from '../';
+import fn from '../index';
 
 const { rule, ruleName, messages } = fn;
 
