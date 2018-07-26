@@ -8,52 +8,48 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 	expected: 'Expected box-shadow inset values to be first in the value list.'
 });
 
-const plugin = stylelint.createPlugin(ruleName, ( bool ) => {
+const plugin = stylelint.createPlugin(ruleName, ( bool ) => ( cssRoot, result ) => {
 
-	return ( cssRoot, result ) => {
+	const validOptions = stylelint.utils.validateOptions(result, ruleName, {
+		actual: bool
+	});
 
-		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-			actual: bool
+	if ( !validOptions ) {
+		return;
+	}
+
+	cssRoot.walkDecls('box-shadow', ( decl ) => {
+
+		const list = [];
+
+		valueParser(decl.value).walk(( node ) => {
+			if ( node.type === 'function' ) {
+				return false;
+			}
+			if ( node.value === 'inset' || node.value === ',' ) {
+				list.push(node.value);
+			}
 		});
 
-		if ( !validOptions ) {
-			return;
+		const inputOrder = list.map(( item ) => {
+			if ( item === ',' ) {
+				return 'normal';
+			}
+			return item;
+		});
+		const correctOrder = [].concat(inputOrder).sort();
+
+		if ( !_.isEqual(inputOrder, correctOrder) ) {
+			stylelint.utils.report({
+				ruleName: ruleName,
+				result: result,
+				node: decl,
+				message: messages.expected
+			});
 		}
 
-		cssRoot.walkDecls('box-shadow', ( decl ) => {
 
-			const list = [];
-
-			valueParser(decl.value).walk(( node ) => {
-				if ( node.type === 'function' ) {
-					return false;
-				}
-				if ( node.value === 'inset' || node.value === ',' ) {
-					list.push(node.value);
-				}
-			});
-
-			const inputOrder = list.map(( item ) => {
-				if ( item === ',' ) {
-					return 'normal';
-				}
-				return item;
-			});
-			const correctOrder = [].concat(inputOrder).sort();
-
-			if ( !_.isEqual(inputOrder, correctOrder) ) {
-				stylelint.utils.report({
-					ruleName: ruleName,
-					result: result,
-					node: decl,
-					message: messages.expected
-				});
-			}
-
-
-		});
-
-	};
+	});
 
 });
 plugin.messages = messages;
