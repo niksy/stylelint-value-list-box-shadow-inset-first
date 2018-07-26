@@ -1,18 +1,18 @@
-var stylelint = require('stylelint');
-var _ = require('lodash');
-var valueParser = require('postcss-value-parser');
+import stylelint from 'stylelint';
+import _ from 'lodash';
+import valueParser from 'postcss-value-parser';
 
-var ruleName = 'plugin/value-list-box-shadow-inset-first';
+const ruleName = 'plugin/value-list-box-shadow-inset-first';
 
-var messages = stylelint.utils.ruleMessages(ruleName, {
+const messages = stylelint.utils.ruleMessages(ruleName, {
 	expected: 'Expected box-shadow inset values to be first in the value list.'
 });
 
-module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
+const plugin = stylelint.createPlugin(ruleName, ( bool ) => {
 
-	return function ( cssRoot, result ) {
+	return ( cssRoot, result ) => {
 
-		var validOptions = stylelint.utils.validateOptions(result, ruleName, {
+		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 			actual: bool
 		});
 
@@ -20,13 +20,11 @@ module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
 			return;
 		}
 
-		cssRoot.walkDecls('box-shadow', function ( decl ) {
+		cssRoot.walkDecls('box-shadow', ( decl ) => {
 
-			var list = [];
-			var inputOrder = [];
-			var correctOrder = [];
+			const list = [];
 
-			valueParser(decl.value).walk(function ( node ) {
+			valueParser(decl.value).walk(( node ) => {
 				if ( node.type === 'function' ) {
 					return false;
 				}
@@ -35,13 +33,13 @@ module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
 				}
 			});
 
-			inputOrder = list.map(function ( item ) {
+			const inputOrder = list.map(( item ) => {
 				if ( item === ',' ) {
 					return 'normal';
 				}
 				return item;
 			});
-			correctOrder = [].concat(inputOrder).sort();
+			const correctOrder = [].concat(inputOrder).sort();
 
 			if ( !_.isEqual(inputOrder, correctOrder) ) {
 				stylelint.utils.report({
@@ -58,6 +56,6 @@ module.exports = stylelint.createPlugin(ruleName, function ( bool ) {
 	};
 
 });
+plugin.messages = messages;
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+export default plugin;

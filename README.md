@@ -56,4 +56,4 @@ a { box-shadow: inset 1px 1px 1px #fff, inset 3px 3px 3px red, 2px 2px 2px rgba(
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
 [ci]: https://travis-ci.org/niksy/stylelint-value-list-box-shadow-inset-first
-[ci-img]: https://img.shields.io/travis/niksy/stylelint-value-list-box-shadow-inset-first.svg
+[ci-img]: https://travis-ci.org/niksy/stylelint-value-list-box-shadow-inset-first.svg?branch=master

@@ -1,8 +1,10 @@
-var test = require('stylelint-test-rule-tape');
-var fn = require('../');
+import test from 'stylelint-test-rule-tape';
+import fn from '../';
 
-test(fn.rule, {
-	ruleName: fn.ruleName,
+const { rule, ruleName, messages } = fn;
+
+test(rule, {
+	ruleName: ruleName,
 	config: true,
 	skipBasicChecks: true,
 
@@ -14,7 +16,7 @@ test(fn.rule, {
 	reject: [
 		{
 			code: 'a { box-shadow:2px 2px 2px rgba(0,0,0,1), inset 1px 1px 1px #fff, 3px 3px 3px yellow; }',
-			message: fn.messages.expected
+			message: messages.expected
 		}
 	]
 });
