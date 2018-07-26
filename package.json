@@ -24,7 +24,7 @@
   "dependencies": {
     "lodash": "^4.13.1",
     "postcss-value-parser": "^3.3.0",
-    "stylelint": "^6.7.1"
+    "stylelint": "^9.4.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
