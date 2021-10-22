@@ -18,6 +18,7 @@ const plugin = stylelint.createPlugin(ruleName, (bool) => (cssRoot, result) => {
 	}
 
 	cssRoot.walkDecls('box-shadow', (decl) => {
+		/** @type {string[]} */
 		const list = [];
 
 		valueParser(decl.value).walk((node) => {
@@ -35,7 +36,7 @@ const plugin = stylelint.createPlugin(ruleName, (bool) => (cssRoot, result) => {
 			}
 			return item;
 		});
-		const correctOrder = [].concat(inputOrder).sort();
+		const correctOrder = [...inputOrder].sort();
 
 		if (!isEqual(inputOrder, correctOrder)) {
 			stylelint.utils.report({
