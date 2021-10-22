@@ -27,11 +27,15 @@ Add this config to your `.stylelintrc`:
 
 ## Details
 
+<!-- prettier-ignore-start -->
+
 ```css
 a { box-shadow: inset 1px 1px 1px #fff, 2px 2px 2px rgba(0,0,0,1), inset 3px 3px 3px red; }
 /**                                                                ↑
  * Inset value group is not positioned in correct order */
 ```
+
+<!-- prettier-ignore-end -->
 
 ### Options
 
@@ -39,15 +43,23 @@ a { box-shadow: inset 1px 1px 1px #fff, 2px 2px 2px rgba(0,0,0,1), inset 3px 3px
 
 The following pattern is considered warning:
 
+<!-- prettier-ignore-start -->
+
 ```css
 a { box-shadow: inset 1px 1px 1px #fff, 2px 2px 2px rgba(0,0,0,1), inset 3px 3px 3px red; }
 ```
 
-The following pattern is *not* considered warning:
+<!-- prettier-ignore-end -->
+
+The following pattern is _not_ considered warning:
+
+<!-- prettier-ignore-start -->
 
 ```css
 a { box-shadow: inset 1px 1px 1px #fff, inset 3px 3px 3px red, 2px 2px 2px rgba(0,0,0,1); }
 ```
+
+<!-- prettier-ignore-end -->
 
 ---
 
@@ -55,5 +67,9 @@ a { box-shadow: inset 1px 1px 1px #fff, inset 3px 3px 3px red, 2px 2px 2px rgba(
 
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
-[ci]: https://travis-ci.org/niksy/stylelint-value-list-box-shadow-inset-first
-[ci-img]: https://travis-ci.org/niksy/stylelint-value-list-box-shadow-inset-first.svg?branch=master
+<!-- prettier-ignore-start -->
+
+[ci]: https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/actions?query=workflow%3ACI
+[ci-img]: https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/workflows/CI/badge.svg?branch=master
+
+<!-- prettier-ignore-end -->

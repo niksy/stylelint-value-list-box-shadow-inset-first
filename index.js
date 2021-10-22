@@ -1,5 +1,5 @@
 import stylelint from 'stylelint';
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import valueParser from 'postcss-value-parser';
 
 const ruleName = 'plugin/value-list-box-shadow-inset-first';
@@ -8,38 +8,36 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 	expected: 'Expected box-shadow inset values to be first in the value list.'
 });
 
-const plugin = stylelint.createPlugin(ruleName, ( bool ) => ( cssRoot, result ) => {
-
+const plugin = stylelint.createPlugin(ruleName, (bool) => (cssRoot, result) => {
 	const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 		actual: bool
 	});
 
-	if ( !validOptions ) {
+	if (!validOptions) {
 		return;
 	}
 
-	cssRoot.walkDecls('box-shadow', ( decl ) => {
-
+	cssRoot.walkDecls('box-shadow', (decl) => {
 		const list = [];
 
-		valueParser(decl.value).walk(( node ) => {
-			if ( node.type === 'function' ) {
+		valueParser(decl.value).walk((node) => {
+			if (node.type === 'function') {
 				return false;
 			}
-			if ( node.value === 'inset' || node.value === ',' ) {
+			if (node.value === 'inset' || node.value === ',') {
 				list.push(node.value);
 			}
 		});
 
-		const inputOrder = list.map(( item ) => {
-			if ( item === ',' ) {
+		const inputOrder = list.map((item) => {
+			if (item === ',') {
 				return 'normal';
 			}
 			return item;
 		});
 		const correctOrder = [].concat(inputOrder).sort();
 
-		if ( !_.isEqual(inputOrder, correctOrder) ) {
+		if (!isEqual(inputOrder, correctOrder)) {
 			stylelint.utils.report({
 				ruleName: ruleName,
 				result: result,
@@ -47,11 +45,7 @@ const plugin = stylelint.createPlugin(ruleName, ( bool ) => ( cssRoot, result ) 
 				message: messages.expected
 			});
 		}
-
-
 	});
-
 });
-plugin.messages = messages;
 
-export default plugin;
+export default { ...plugin, messages };
