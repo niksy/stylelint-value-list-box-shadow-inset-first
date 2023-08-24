@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [3.1.0][] - 2023-08-24
+
 ### Changed
 
 -   Allow Stylelint 15 as peer dependancy
@@ -18,3 +20,7 @@
 
 [3.0.0]:
 	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/tree/v3.0.0
+[Unreleased]:
+	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/compare/v3.1.0...HEAD
+[3.1.0]:
+	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/tree/v3.1.0
