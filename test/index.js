@@ -20,6 +20,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 86,
+					endLine: 1,
 					text: messages.expected
 				}
 			]
