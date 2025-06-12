@@ -41,7 +41,6 @@
     "version": "if [ $(git rev-parse --abbrev-ref HEAD) == 'master' ]; then sed -i '' '/\\[unreleased\\]:/d' CHANGELOG.md && version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md; else echo; fi"
   },
   "dependencies": {
-    "lodash.isequal": "^4.5.0",
     "postcss-value-parser": "^4.1.0"
   },
   "devDependencies": {

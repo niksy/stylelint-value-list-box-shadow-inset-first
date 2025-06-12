@@ -1,5 +1,5 @@
+import util from 'node:util';
 import stylelint from 'stylelint';
-import isEqual from 'lodash.isequal';
 import valueParser from 'postcss-value-parser';
 
 const ruleName = 'plugin/value-list-box-shadow-inset-first';
@@ -42,7 +42,7 @@ function ruleFunction(/** @type boolean*/ bool) {
 			});
 			const correctOrder = [...inputOrder].sort();
 
-			if (!isEqual(inputOrder, correctOrder)) {
+			if (!util.isDeepStrictEqual(inputOrder, correctOrder)) {
 				stylelint.utils.report({
 					ruleName: ruleName,
 					result: result,
