@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [3.2.0][] - 2025-06-12
+
 ### Changed
 
 -   Remove unecessary dependancy
@@ -36,4 +38,8 @@
 [3.1.1]:
 	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/tree/v3.1.1
 [Unreleased]:
-	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/compare/v3.1.1...HEAD
+	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/compare/v3.2.0...HEAD
+[3.2.0]:
+	https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/tree/v3.2.0
+
+    https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/compare/v3.1.1...HEAD
