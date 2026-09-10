@@ -70,6 +70,6 @@ MIT © [Ivan Nikolić](http://ivannikolic.com)
 <!-- prettier-ignore-start -->
 
 [ci]: https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/actions?query=workflow%3ACI
-[ci-img]: https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/workflows/CI/badge.svg?branch=master
+[ci-img]: https://github.com/niksy/stylelint-value-list-box-shadow-inset-first/actions/workflows/ci.yml/badge.svg?branch=master
 
 <!-- prettier-ignore-end -->
